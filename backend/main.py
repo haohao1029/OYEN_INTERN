@@ -7,9 +7,10 @@ import sqlite3
 
 app = FastAPI()
 print(settings)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -23,10 +24,11 @@ c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS users (username text, password text)")
 conn.commit()
 
-# Path: /api/register
+# Path: /register
 @app.post("/register")
 async def register(username: str = Form(...), password: str = Form(...)):
     # check if username already exists
+    print(username, password)
     c = conn.cursor()
     c.execute("SELECT * FROM users WHERE username=?", (username,))
     if c.fetchone() is not None:
@@ -34,10 +36,10 @@ async def register(username: str = Form(...), password: str = Form(...)):
     # insert user into database
     c.execute("INSERT INTO users VALUES (?, ?)", (username, password))
     conn.commit()
-    return {"username": username}
+    return {"username": username, "status": "success"}
 
 
-# Path: /api/login
+# Path: /login
 @app.post("/login")
 async def login(username: str = Form(...), password: str = Form(...)):
     # check if username and password match
@@ -47,14 +49,14 @@ async def login(username: str = Form(...), password: str = Form(...)):
         raise HTTPException(status_code=400, detail="Username or password is incorrect")
     return {"username": username}
 
-# Path: /api/users
+# Path: /users
 @app.get("/users")
 async def users():
     print("get users")
     c = conn.cursor()
     c.execute("SELECT username FROM users")
     users = c.fetchall()
-    return {"users": users}
+    return {"users": users, "status": "success"}
 
 @app.get("/user")
 async def user(username: str):
@@ -63,4 +65,4 @@ async def user(username: str):
     user = c.fetchone()
     if user is None:
         raise HTTPException(status_code=400, detail="User does not exist")
-    return {"user": user}
+    return {"user": user, "status": "success"}
