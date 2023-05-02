@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Frontend</title>
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- utc-8 -->
+    <meta charset="utc-8">
+</head>
+
+<body>
+    <h1 id="status">You havent login</h1>
+    <button onclick="login()" id="cta">Login</button>
+</body>
+<script>
+    // check if user is logged in
+    if (localStorage.getItem('username')) {
+        // change status
+        document.getElementById('status').innerHTML = 'You are logged in as ' + localStorage.getItem('username');
+        // change login link
+        document.getElementById('cta').innerHTML = 'Logout';
+        document.getElementById('cta').setAttribute('onclick', 'logout()');
+    }
+    function login() {
+        //redirect to login
+        window.location.href = 'login.html';
+    }
+    function logout() {
+        // remove username from local storage
+        localStorage.removeItem('username');
+        // redirect to home page
+        window.location.href = '/';
+        // cta logout
+        document.getElementById('cta').innerHTML = 'Login';
+        // login link
+        document.getElementById('cta').setAttribute('onclick', 'login()');
+        // change status
+        document.getElementById('status').innerHTML = 'You success logout';
+
+    }
+</script>
+
+</html>

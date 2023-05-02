@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- utc-8 -->
+    <meta charset="utc-8">
+</head>
+
+<body>
+    <!-- SImple Register -->
+    <h1>REGISTER</h1>
+    <form id="form">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+    </form>
+    <button onclick="formSubmit()">Register</button>
+    <a href="/login.html">Login</a>
+</body>
+<script>
+        if (localStorage.getItem('username')) {
+        window.location.href = '/';
+    }
+    async function formSubmit() {
+        let username = document.querySelector('input[name="username"]').value;
+        let password = document.querySelector('input[name="password"]').value;
+        if (username == '' || password == '') {
+            alert("Please fill all the fields");
+            return;
+        }
+        // create form data
+        let formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        // send form data
+        console.log(formData);
+        // fetch api port 8000/register catch error
+        result = await fetch('/api/register', { method: 'POST', body: formData })
+        console.log(result)
+        if (result.status == 200) {
+            alert("Register Success");
+            data = await result.json()
+            localStorage.setItem('username', data.username);
+            window.location.href = '/';
+        } else {
+            data = await result.json();
+            alert(await data.detail);
+        }
+
+    }
+</script>
+
+</html>
+	
