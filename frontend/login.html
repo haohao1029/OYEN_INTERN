@@ -21,7 +21,9 @@
     <a href="register.html">Register</a>
 </body>
 <script>
-
+    if (localStorage.getItem('username')) {
+        window.location.href = '/';
+    }
 
     async function formSubmit(e) {
 

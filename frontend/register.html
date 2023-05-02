@@ -21,6 +21,9 @@
     <a href="/login.html">Login</a>
 </body>
 <script>
+        if (localStorage.getItem('username')) {
+        window.location.href = '/';
+    }
     async function formSubmit() {
         let username = document.querySelector('input[name="username"]').value;
         let password = document.querySelector('input[name="password"]').value;
