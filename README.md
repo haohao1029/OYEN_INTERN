@@ -21,23 +21,24 @@ OYEN_INTERN
 ```
 ### How to run
 ```bash
+#port=3050
 docker-compose up --build
 
 # OR
-
+#port=3000
 cd frontend
 python3 -m http.server 5000
-
+#port=8000
 cd backend
 pipenv install -r requirements.txt
 uvicorn main:app --reload
 
 # OR
-
+#3000
 cd frontend 
 docker build oyen_frontend .
 docker run -p 3000:3000 oyen_frontend
-
+#8000
 cd backend
 docker build -t jinghao/oyen_backend .
 docker run -it -p 8000:8000 jinghao/oyen_backend
