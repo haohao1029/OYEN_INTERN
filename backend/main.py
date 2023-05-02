@@ -2,8 +2,18 @@ from fastapi import FastAPI, HTTPException, Form, Response
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from config import settings
 import sqlite3
+from pydantic import BaseSettings
+
+
+class Settings(BaseSettings):
+    DATABASE: str = "database.db"
+
+class Config:
+    env_file = ".env"
+
+
+settings = Settings()
 
 app = FastAPI()
 print(settings)
@@ -36,7 +46,7 @@ async def register(username: str = Form(...), password: str = Form(...)):
     # insert user into database
     c.execute("INSERT INTO users VALUES (?, ?)", (username, password))
     conn.commit()
-    return {"username": username, "status": "success"}
+    return {"username": username}
 
 
 # Path: /login
@@ -56,7 +66,7 @@ async def users():
     c = conn.cursor()
     c.execute("SELECT username FROM users")
     users = c.fetchall()
-    return {"users": users, "status": "success"}
+    return {"users": users}
 
 @app.get("/user")
 async def user(username: str):
@@ -65,4 +75,4 @@ async def user(username: str):
     user = c.fetchone()
     if user is None:
         raise HTTPException(status_code=400, detail="User does not exist")
-    return {"user": user, "status": "success"}
+    return {"user": user}
