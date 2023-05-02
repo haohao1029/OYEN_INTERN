@@ -21,6 +21,10 @@ OYEN_INTERN
 ```
 ### How to run
 ```bash
+docker-compose up --build
+
+# OR
+
 cd frontend
 python3 -m http.server 5000
 
