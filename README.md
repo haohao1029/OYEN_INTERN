@@ -36,7 +36,7 @@ OYEN_INTERN
 docker-compose up --build
 
 # OR
-#port=3000
+#port=5000
 cd frontend
 python3 -m http.server 5000
 #port=8000
