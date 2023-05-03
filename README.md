@@ -1,5 +1,4 @@
 # OYEN ASSESSMENT LOGIN PAGE WITH FASTAPI
-## I made some mistake in docker compose, plaese use `v1.0.0` to run
 ![](assets/demo.gif)
 
 ```
@@ -32,6 +31,11 @@ OYEN_INTERN
 
 ### How to run
 ```bash
+# port 3050
+docker-compose up --build
+
+# OR
+
 #port=5000
 # If you want to run the service seperately, you have to update the api call path from
 # `/api/login` to `localhost:8000/login` in `login.html:37` and `/api/register` to `localhost:8000/register` in `register.html:41`
@@ -70,3 +74,4 @@ IN docker compose, the frontend will call `/api/users` but not `localhost:8000/u
 ## TODO
 
 - Dockerising multi container with nginx 
+
