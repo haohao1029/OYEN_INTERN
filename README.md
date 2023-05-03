@@ -37,6 +37,8 @@ docker-compose up --build
 
 # OR
 #port=5000
+# If you want to run the service seperately, you have to update the api call path from `/api/login` to `localhost:8000/login` in `login.html:37` and `/api/register` to `localhost:8000/register` in `register.html:41`
+
 cd frontend
 python3 -m http.server 5000
 #port=8000
@@ -46,6 +48,7 @@ uvicorn main:app --reload
 
 # OR
 #3000
+
 cd frontend 
 docker build oyen_frontend .
 docker run -p 3000:3000 oyen_frontend
@@ -64,6 +67,8 @@ all the requirements are stored in `requirements.txt`
 You must have sqlite in your laptop in order to run the project. After the project run `database.db` will be created and `users` table with name and password columns will be created if it doesn't exist.
 The project use `pipenv` as virtual environment library
 
+## Docker Compose
+IN docker compose, the frontend will call `/api/users` but not `localhost:8000/users`, the nginx will be perform `backward proxy` based on the path. You can see the detail at `./nginx/default.conf`
 
 ## TODO
 
