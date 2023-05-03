@@ -37,8 +37,7 @@ docker-compose up --build
 # OR
 # v1.0.0
 #port=5000
-# If you want to run the service seperately, you have to update the api call path from
-# `/api/login` to `localhost:8000/login` in `login.html:37` and `/api/register` to `localhost:8000/register` in `register.html:41`
+
 
 cd frontend
 python3 -m http.server 5000
@@ -49,6 +48,8 @@ uvicorn main:app --reload
 
 # OR
 #3000
+# If you want to run the service seperately, you have to update the api call path from
+# `/api/login` to `localhost:8000/login` in `login.html:37` and `/api/register` to `localhost:8000/register` in `register.html:41`
 
 cd frontend 
 docker build oyen_frontend .
