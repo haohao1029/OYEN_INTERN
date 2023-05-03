@@ -2,25 +2,12 @@
 
 ![](assets/demo.gif)
 
-```
-OYEN_INTERN
-├─ backend
-│  ├─ .env
-│  ├─ config.py
-│  ├─ database.db
-│  ├─ main.py
-│  ├─ Pipfile
-│  ├─ Pipfile.lock
-│  └─ requirements.txt
-├─ frontend
-│  ├─ index.html
-│  ├─ login.html
-│  └─ register.html
-└─ README.md
 
-```
 ### How to run
 ```bash
+docker-compose up --build
+# OR 
+
 cd frontend
 python3 -m http.server 5000
 
@@ -52,3 +39,4 @@ The project use `pipenv` as virtual environment library
 ## TODO
 
 - Dockerising multi container with nginx 
+
