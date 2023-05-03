@@ -7,9 +7,9 @@ services:
     restart: always
     image: 'nginx:latest'
     ports:
-      - '3050:80'
+      - '80:80'
     depends_on:
-      # - frontend
+      - frontend
       - backend
   backend:
     build: 
