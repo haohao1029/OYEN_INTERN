@@ -4,21 +4,32 @@
 
 ```
 OYEN_INTERN
+├─ assets
+│  └─ demo.gif
 ├─ backend
 │  ├─ .env
-│  ├─ config.py
 │  ├─ database.db
+│  ├─ Dockerfile
 │  ├─ main.py
 │  ├─ Pipfile
 │  ├─ Pipfile.lock
 │  └─ requirements.txt
+├─ docker-compose.yaml
 ├─ frontend
-│  ├─ index.html
-│  ├─ login.html
-│  └─ register.html
+│  ├─ app
+│  │  ├─ index.html
+│  │  ├─ login.html
+│  │  └─ register.html
+│  ├─ Dockerfile
+│  └─ nginx
+│     └─ default.conf
+├─ nginx
+│  ├─ default.conf
+│  └─ Dockerfile
 └─ README.md
 
 ```
+
 ### How to run
 ```bash
 #port=3050
