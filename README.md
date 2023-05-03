@@ -31,11 +31,11 @@ OYEN_INTERN
 
 ### How to run
 ```bash
-# port 3050
+# port 3050 v2.0.0
 docker-compose up --build
 
 # OR
-
+# v1.0.0
 #port=5000
 # If you want to run the service seperately, you have to update the api call path from
 # `/api/login` to `localhost:8000/login` in `login.html:37` and `/api/register` to `localhost:8000/register` in `register.html:41`
