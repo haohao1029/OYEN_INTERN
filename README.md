@@ -61,7 +61,7 @@ docker run -it -p 8000:8000 jinghao/oyen_backend
 ```
 
 ## Frontend
-Frontend use `localstorage` to store username and you can run straight open the html file or you could use the cmd below to run the file. User will be redirected to home page if user trying to access `/login` and `/register` after they login.
+Frontend use `localstorage` to store username and you can run straight open the html file or you could use the cmd below to run the file. In real practice, we should use `cookie` to store the `login token`. User will be redirected to home page if user trying to access `/login` and `/register` after they login.
 
 
 ## Backend
