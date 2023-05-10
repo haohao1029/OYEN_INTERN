@@ -71,8 +71,3 @@ The project use `pipenv` as virtual environment library
 
 ## Docker Compose
 IN docker compose, the frontend will call `/api/users` but not `localhost:8000/users`, the nginx will be perform `backward proxy` based on the path. You can see the detail at `./nginx/default.conf`
-
-## TODO
-
-- Dockerising multi container with nginx 
-
